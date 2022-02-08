@@ -41,7 +41,13 @@ type Query {
 }
 
 type Mutation {
+  updateUser(userData: UpdateUserDataInput!, id: ID!): User!
   newUser(newUserData: NewUserInput!): User!
+}
+
+input UpdateUserDataInput {
+  username: String!
+  password: String
 }
 
 input NewUserInput {

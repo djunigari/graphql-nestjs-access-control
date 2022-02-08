@@ -18,6 +18,7 @@ import { CreateUserService } from './services/users/CreateUser.service';
 import { FindAllRolesOfUserByIdService } from './services/users/FindAllRolesOfUserById.service';
 import { FindAllUsersService } from './services/users/FindAllUsers.service';
 import { FindUserByIdService } from './services/users/FindUserById.service';
+import { UpdateUserService } from './services/users/UpdateUser.service';
 
 @Module({
   imports: [TypeOrmModule.forFeature([Permission, Role, User])],
@@ -37,6 +38,7 @@ import { FindUserByIdService } from './services/users/FindUserById.service';
     FindAllRolesOfUserByIdService,
     CreateUserService,
     FindAllUsersService,
+    UpdateUserService,
   ],
   exports: [
     TypeOrmModule,
@@ -49,6 +51,7 @@ import { FindUserByIdService } from './services/users/FindUserById.service';
     FindAllRolesOfUserByIdService,
     CreateUserService,
     FindAllUsersService,
+    UpdateUserService,
   ],
 })
 export class ServerModule {}

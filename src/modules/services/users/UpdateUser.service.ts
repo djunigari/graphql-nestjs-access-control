@@ -9,20 +9,15 @@ interface IUpdateUserDto {
 
 @Injectable()
 export class UpdateUserService extends BaseUserService {
-  async execute(
-    userId: string,
-    { username, password }: IUpdateUserDto,
-  ): Promise<User | Error> {
-    const User = await this.repo().findOne(userId);
+  async execute(userId: string, { username, password }: IUpdateUserDto) {
+    const user = await this.repo().findOne(userId);
 
     if (!User) {
       return new Error('User not exists');
     }
+    if (username) user.username = username;
+    if (password) user.password = password;
 
-    return await this.repo().save({
-      id: userId,
-      username,
-      password,
-    });
+    return this.repo().save(user);
   }
 }
